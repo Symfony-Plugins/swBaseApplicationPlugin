@@ -23,6 +23,7 @@ class swMenuElement
   protected
     $name     = null,
     $route    = null,
+    $params   = array(),
     $child    = array(),
     $selected = false,
     $uid      = null,
@@ -38,6 +39,7 @@ class swMenuElement
   public function __construct(array $options = array())
   {
     $this->name     = isset($options['name']) ? $options['name'] : null;
+    $this->params   = isset($options['params']) ? $options['params'] : null;
     $this->route    = isset($options['route']) ? $options['route'] : null;
     $this->id       = isset($options['id']) ? $options['id'] : null;
     $this->style    = isset($options['style']) ? $options['style'] : null;
@@ -102,7 +104,7 @@ class swMenuElement
   public function getLinkParams()
   {
     
-    return array();
+    return $this->params;
   }
   
   public function setBound($bool)

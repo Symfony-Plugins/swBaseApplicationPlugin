@@ -21,14 +21,19 @@ class swMenuElementFormatter
   public function renderLink($element, $level = 0)
   {
     $name = str_repeat("&nbsp;&nbsp;", $level * 2).$element->getName();
-    $link_to = $name;
-    
-    if($element->getRoute())
+
+    $params = $element->getLinkParams();
+    $route  =  $element->getRoute();
+
+    if('@' == substr($element->getRoute(), 0, 1) || false !== strpos($element->getRoute(), '/'))
     {
-      $link_to = link_to($name, $element->getRoute(), $element->getLinkParams());
+      if(count($params) > 0)
+      {
+        $params = array('query_string' => http_build_query($params));
+      }
     }
     
-    return $link_to; 
+    return $element->getRoute() ? link_to($name, $route, $params) : $name;
   }
   
   public function render(swMenuElement $element, $level = 0)

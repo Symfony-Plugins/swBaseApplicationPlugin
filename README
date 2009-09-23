@@ -1,0 +1,19 @@
+# Base Application
+
+This plugin provides (try) a standard and uniform way to create a backend or a
+entreprise web application (where the functional is more important than the design).
+
+For now, the plugin has :
+
+- a theme
+- a menu manager via the event dispatche
+
+
+## Write a menu manager
+
+
+
+## TO DO
+
+- create a custom admin generator
+- improve the menumanager
