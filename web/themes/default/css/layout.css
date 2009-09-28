@@ -314,7 +314,7 @@ div.sw-base-filters {
 }
 
 div.sw-base-filters dd,div.sw-base-filters dt {
-  float: left;
+  /*float: left;*/
 }
 
 /* Footer ---------------------------------------- */
