@@ -46,6 +46,7 @@ div.sw-contents
 
 div.sw-base-admin-list
 {
+  clear: both;
   width: 700px;
 }
 
@@ -231,6 +232,12 @@ div.sw-base-filters dt
 div.sw-base-filters dd
 {
   margin: 0px;
+}
+
+div.sw-div-checkbox-container input,
+div.sw-base-filters input.sw-radio,
+div.sw-base-filters input.sw-checkbox {
+  width:auto;
 }
 
 /* TABLE */
