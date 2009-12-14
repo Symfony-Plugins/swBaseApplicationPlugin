@@ -75,6 +75,7 @@ class swMenuManager
   
   public function registerHandler($handler)
   {
+    
     $this->menu_handlers[] = $handler;
   }
   
@@ -104,8 +105,14 @@ class swMenuManager
 
     foreach($this->menu_handlers as $handler)
     {
+
+      if(!sfAutoload::getInstance()->loadClass($handler))
+      {
+
+        throw new sfException(sprintf('The class "%s" does not exists', $handler));
+      }
       
-      if(is_string($handler) && sfAutoload::getInstance()->loadClass($handler))
+      if(is_string($handler))
       {
         $handler = new $handler;
       }
