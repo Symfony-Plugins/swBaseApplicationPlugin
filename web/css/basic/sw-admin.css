@@ -293,6 +293,11 @@ table.sw-base-admin-table-standard td.sw-base-admin-table-status
   text-align: center;
 }
 
+table.sw-base-admin-table-standard td.sw-base-admin-table-reference
+{
+  text-align: center;
+}
+
 table.sw-base-admin-table-standard tfoot
 {
   border-top: 3px solid #aaa;
