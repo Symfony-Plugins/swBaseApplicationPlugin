@@ -81,7 +81,7 @@ class swMenuManager
   
   public function buildMenu()
   {
-    
+
     if($this->bound)
     {
       

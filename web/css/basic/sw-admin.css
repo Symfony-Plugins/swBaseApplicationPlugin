@@ -303,6 +303,11 @@ table.sw-base-admin-table-standard tfoot
   border-top: 3px solid #aaa;
 }
 
+div#wrapper
+{
+  text-align:left;
+}
+
 div#sw-base-container-column form th
 {
   vertical-align: top;

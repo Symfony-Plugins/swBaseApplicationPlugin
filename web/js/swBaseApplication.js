@@ -60,4 +60,7 @@ jQuery(window).bind('load', function(){
     }
     
   });
+  
+  jQuery("a.sw-auto-modal").colorbox();
+  jQuery("a.sw-auto-modal-iframe").colorbox({width:"80%", height:"80%", iframe:true});
 })
