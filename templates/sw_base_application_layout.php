@@ -46,11 +46,6 @@
     </div>  
     <p id="footer"><a href="http://www.soleoweb.com">(c) Soleoweb SARL.</a></p>
   </div>
-
-  <?php if(sfConfig::get('mg_i18n_enabled', false)): ?>
-    <?php include_component('mgI18nAdmin', 'displayTranslationBox') ?>
-  <?php endif;?>
-
 </body>
 </html>
 
