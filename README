@@ -8,6 +8,68 @@ For now, the plugin has :
 - a theme
 - a menu manager via the event dispatche
 
+## PDF output
+
+The plugin has a PDF generator filter to handle sf_format with pdf as a value. In order 
+to make it work fine you need to create a layout.pdf.php file and create a showSuccess.pdf.php.  
+
+To get a better understanding, you should check :
+
+ * [wkhtmltopdf project](http://code.google.com/p/wkhtmltopdf)
+ * [jobeet and sf_format](http://www.symfony-project.org/jobeet/1_4/Doctrine/en/15)
+ * [iphone and sf_format](http://www.symfony-project.org/blog/2008/06/09/how-to-create-an-optimized-version-of-your-website-for-the-iphone-in-symfony-1-1)
+
+### how to set up
+
+  * install wkhtmltopdf => http://code.google.com/p/wkhtmltopdf
+
+  * edit your app.yml file and make sure wkhtmltopdf can be started by your webserver
+  
+        [yml]
+        swToolbox:
+          wkhtml:
+            command: /opt/local/bin/wkhtmltopdf --page-size A4
+
+  * edit your filters.yml file and add the swPdfFilter reference
+
+        [yml]
+        rendering: ~
+        security:  ~
+        swPdfFilter:
+          enabled: true
+          class: swWkhtmlToPdfFilter
+          
+  * add custom stylesheet by adding a special event listener
+
+        [php]
+        class backendConfiguration extends sfApplicationConfiguration
+        {
+          public function configure()
+          {
+
+          }
+
+          public function initialize()
+          {
+            $this->dispatcher->connect('wkhtml.initialize', array($this, 'initializedPdfAssets'));
+          }
+
+          public function initializedPdfAssets(sfEvent $event)
+          {
+            $context = $event->getSubject()->getContext();
+            $context->getResponse()->addStylesheet('/css/pdf.css', 'last');
+          }
+        }
+  
+  * now you can create a link like this : 
+  
+        [php]
+        echo link_to('PDF version', 'show_order', array('sf_subject' => $order, 'sf_format' => 'pdf');
+        // => http://yourecommerce.com/order/show/0907190001.pdf
+  
+### WARNING
+
+This solution creates PDF file on the fly, so this can not be suitable on heavy load webserver.
 
 ## Write a menu manager
 
